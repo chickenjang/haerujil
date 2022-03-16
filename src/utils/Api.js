@@ -15,7 +15,7 @@ function Api(page) {
       }
     };
     fetchState();
-  }, [state]);
+  }, [page]);
   return state;
 }
 

@@ -1,11 +1,11 @@
-function Subject({ pathname }) {
+function Subject({ page }) {
   return (
     <div>
-      {pathname === "trips"
+      {page === "trips"
         ? "조행기"
-        : pathname === "chats"
+        : page === "chats"
         ? "지역모임"
-        : pathname === "cooks"
+        : page === "cooks"
         ? "요리법/손질법"
         : "Error"}
     </div>

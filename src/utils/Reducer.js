@@ -9,6 +9,9 @@ function Reducer(state, action) {
     case "LOGIN":
       newState.login = true;
       return newState;
+    case "LOGOUT":
+      newState.login = false;
+      return newState;
     default:
       return newState;
   }
