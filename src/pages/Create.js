@@ -29,7 +29,7 @@ function Create() {
         body: event.target.body.value,
       },
     })
-      .then(() => navigate(`/${page}`), { replace: true })
+      .then(() => navigate(`/${page}`, { replace: true }))
       .catch(() => console.log("에러"));
   }
   return (

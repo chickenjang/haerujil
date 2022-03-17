@@ -1,23 +1,26 @@
 import Api from "../utils/Api";
 import styled from "styled-components";
 import ShowTime from "./ShowTime";
+import { useNavigate } from "react-router-dom";
 
 function Card({ page }) {
+  const navigate = useNavigate();
   let api;
   if (page !== "tools" || "info") {
     api = Api(page);
   }
 
   function handleClick(event) {
-    console.log(event.currentTarget);
+    const id = event.currentTarget.id;
+    navigate(`${id}`);
   }
 
   return (
-    <CardContainer onClick={handleClick}>
+    <CardContainer>
       {api &&
         api.map(({ _id, title, author, createdAt }) => {
           return (
-            <CardItem key={_id}>
+            <CardItem key={_id} onClick={handleClick} id={_id}>
               <div>{title}</div>
               <div>{author}</div>
               <ShowTime createdAt={createdAt} />
