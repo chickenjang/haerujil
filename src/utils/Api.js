@@ -4,17 +4,12 @@ import { useState, useEffect } from "react";
 function Api(page) {
   const [state, setState] = useState(null);
   useEffect(() => {
-    const fetchState = async () => {
-      try {
-        const response = await axios.get(`http://localhost:3000/${page}`);
-        setState(() => {
-          return response.data;
-        });
-      } catch {
-        console.log("에러");
-      }
-    };
-    fetchState();
+    axios({
+      url: `http://localhost:3000/${page}`,
+      method: "get",
+    })
+      .then((response) => setState(response.data))
+      .catch(() => console.log("에러"));
   }, [page]);
   return state;
 }
