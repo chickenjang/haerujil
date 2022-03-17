@@ -13,7 +13,7 @@ function ReadAll() {
       <Subject page={page} />
       <Card page={page} />
       <Link to="create">
-        <Button purpose="이동" />
+        <Button size="large" text="새 글 작성" />
       </Link>
     </div>
   );

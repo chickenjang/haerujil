@@ -37,7 +37,7 @@ function Create() {
       <WriteTitle />
       <WriteAuthor />
       <WriteBody />
-      <Button purpose="제출" type="submit"></Button>
+      <Button type="submit" size="small" text="등록" />
     </form>
   );
 }
