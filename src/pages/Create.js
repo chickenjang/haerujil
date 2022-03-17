@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import WriteTitle from "../components/WriteTitle";
 import WriteAuthor from "../components/WriteAuthor";
 import WriteBody from "../components/WriteBody";
@@ -9,6 +9,7 @@ import axios from "axios";
 function Create() {
   const location = useLocation();
   const page = location.pathname.split("/")[1];
+  const navigate = useNavigate();
 
   const selector = useSelector((state) => state.login);
   if (!selector) {
@@ -24,10 +25,12 @@ function Create() {
       data: {
         title: event.target.title.value,
         author: event.target.author.value,
-        createdAt: 123,
+        createdAt: Date.now(),
         body: event.target.body.value,
       },
-    }).catch(() => console.log("에러"));
+    })
+      .then(() => navigate(`/${page}`), { replace: true })
+      .catch(() => console.log("에러"));
   }
   return (
     <form onSubmit={handleSubmit}>
